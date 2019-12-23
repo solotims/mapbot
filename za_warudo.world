@@ -1,0 +1,44 @@
+define topurg ranger
+(
+    sensor
+    (
+        range [0  10]
+        fov 180
+        samples 720
+    )
+)
+
+define erratic position
+(
+    size [ 1 1 0.1 ]
+    origin [ 0 0 0 0 ]
+    drive "diff"
+    topurg
+    (
+        pose [ 0 0 0 0 ]
+    )
+)
+
+resolution 0.05
+interval_sim 5
+
+define floorplan model
+(
+	color "black"
+	boundary 1
+	range_return 1
+)
+
+window
+(
+	size [1500 1000]
+	scale 6.5
+)
+
+floorplan
+(
+	bitmap "timsol.png"
+	size [210 60 1]
+)
+
+erratic(pose [-92 12 0 0] name "walrider" color "red")
